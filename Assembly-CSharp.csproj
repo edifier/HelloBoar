@@ -97,13 +97,13 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\ArmorData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureVerifyResources.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedurePreload.cs" />
-    <Compile Include="Assets\GameMain\Scripts\UI\RockerController.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureMenu.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureChangeScene.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\UGuiForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\CSPacketHeader.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\AIUtility.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\AccessoryObjectData.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UI\IngameInterface\IngameInterface.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Armor.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\EffectData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\SCPacketHeader.cs" />
@@ -113,6 +113,7 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\DialogForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\Scene\ScrollableBackground.cs" />
+    <Compile Include="Assets\GameMain\Scripts\DataTable\DRUIIngameInterface.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\NetworkChannelHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\CommonButton.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRArmor.cs" />
@@ -137,11 +138,13 @@
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureLaunch.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRScene.cs" />
     <Compile Include="Assets\GameMain\Scripts\Base\GameEntry.Custom.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UI\IngameInterface\IJoystickEventType.cs" />
     <Compile Include="Assets\GameMain\Scripts\BuiltinData\BuiltinDataComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\MenuForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\SCPacketBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\EntityData.cs" />
     <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarComponent.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UI\IngameInterface\JoystickEventArgs.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\UGuiGroupHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\Debugger\ChangeLanguageDebuggerWindow.cs" />
   </ItemGroup>
@@ -169,6 +172,7 @@
     <None Include="Assets\GameMain\Localization\Korean\Dictionaries\Default.xml" />
     <None Include="Assets\GameMain\Configs\ResourceEditor.xml" />
     <None Include="Assets\GameMain\Configs\BuildInfo.txt" />
+    <None Include="Assets\GameMain\DataTables\UIIngameInterface.txt" />
     <None Include="Assets\GameMain\Libraries\protobuf-net.dll" />
     <None Include="Assets\GameMain\DataTables\Entity.txt" />
   </ItemGroup>

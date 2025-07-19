@@ -26,6 +26,7 @@ namespace GoodbyeWildBoar
             "Sound",
             "UIForm",
             "UISound",
+            "UIIngameInterface",
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new();
@@ -111,8 +112,6 @@ namespace GoodbyeWildBoar
         {
             string dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, false);
             m_LoadedFlag.Add(dataTableAssetName, false);
-            Debug.Log(dataTableName);
-            Debug.Log(dataTableAssetName);
             GameEntry.DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
         }
 

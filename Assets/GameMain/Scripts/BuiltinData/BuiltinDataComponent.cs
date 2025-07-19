@@ -48,7 +48,6 @@ namespace GoodbyeWildBoar
                 return;
             }
 
-            Debug.Log(m_BuildInfoTextAsset.text);
             m_BuildInfo = Utility.Json.ToObject<BuildInfo>(m_BuildInfoTextAsset.text);
             if (m_BuildInfo == null)
             {

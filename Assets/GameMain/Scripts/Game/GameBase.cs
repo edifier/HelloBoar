@@ -35,19 +35,15 @@ namespace GoodbyeWildBoar
             protected set;
         }
 
-        // private MyAircraft m_MyAircraft = null;
+        private bool gameHasInit;
+        private float timer = 0f;
+
+        protected const float gameReadyDelayedSeconds = Constant.Layer.EnterMainSceneDuration;
 
         public virtual void Initialize()
         {
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
             GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
-
-            // 展示飞机
-            // GameEntry.Entity.ShowMyAircraft(new MyAircraftData(GameEntry.Entity.GenerateSerialId(), 10000)
-            // {
-            //     Name = "My Aircraft",
-            //     Position = Vector3.zero,
-            // });
 
             GameOver = false;
         }
@@ -60,11 +56,17 @@ namespace GoodbyeWildBoar
 
         public virtual void Update(float elapseSeconds, float realElapseSeconds)
         {
-            // if (m_MyAircraft != null && m_MyAircraft.IsDead)
-            // {
-            //     GameOver = true;
-            //     return;
-            // }
+            if (!gameHasInit)
+            {
+                timer += elapseSeconds;
+                if (timer >= gameReadyDelayedSeconds)
+                {
+                    gameHasInit = true;
+                    // 展示游戏内UI界面
+                    GameEntry.UI.OpenUIIngameInterface(UIFormId.IngameInterface);
+                    timer = 0f;
+                }
+            }
         }
 
         protected virtual void OnShowEntitySuccess(object sender, GameEventArgs e)

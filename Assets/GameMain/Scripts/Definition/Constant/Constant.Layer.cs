@@ -24,6 +24,8 @@ namespace GoodbyeWildBoar
 
             public const string TargetableObjectLayerName = "Targetable Object";
             public static readonly int TargetableObjectLayerId = LayerMask.NameToLayer(TargetableObjectLayerName);
+
+            public const float EnterMainSceneDuration = 0.3f;
         }
     }
 }

@@ -125,10 +125,9 @@ namespace GoodbyeWildBoar
             return uiComponent.OpenUIForm((int)uiFormId, userData);
         }
 
+
         public static int? OpenUIForm(this UIComponent uiComponent, int uiFormId, object userData = null)
         {
-            Debug.Log(uiFormId);
-            Debug.Log(userData);
             IDataTable<DRUIForm> dtUIForm = GameEntry.DataTable.GetDataTable<DRUIForm>();
             DRUIForm drUIForm = dtUIForm.GetDataRow(uiFormId);
             if (drUIForm == null)
@@ -138,6 +137,7 @@ namespace GoodbyeWildBoar
             }
 
             string assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
+            
             if (!drUIForm.AllowMultiInstance)
             {
                 if (uiComponent.IsLoadingUIForm(assetName))
@@ -151,10 +151,37 @@ namespace GoodbyeWildBoar
                 }
             }
 
-            Debug.Log(assetName);
-            Debug.Log(Constant.AssetPriority.UIFormAsset);
-            Debug.Log("/*************/");
             return uiComponent.OpenUIForm(assetName, drUIForm.UIGroupName, Constant.AssetPriority.UIFormAsset, drUIForm.PauseCoveredUIForm, userData);
+        }
+        
+        public static int? OpenUIIngameInterface(this UIComponent uiComponent, UIFormId uiinGameInterfaceId, object userData = null)
+        {
+            return uiComponent.OpenUIIngameInterface((int)uiinGameInterfaceId, userData);
+        }
+
+        public static int? OpenUIIngameInterface(this UIComponent uiComponent, int uiinGameInterfaceId, object userData = null)
+        {
+            IDataTable<DRUIIngameInterface> dtUIIngameInterface = GameEntry.DataTable.GetDataTable<DRUIIngameInterface>();
+            DRUIIngameInterface drUIIngameInterface = dtUIIngameInterface.GetDataRow(uiinGameInterfaceId);
+            if (drUIIngameInterface == null)
+            {
+                Log.Warning("Can not load UI ingameInterface '{0}' from data table.", uiinGameInterfaceId.ToString());
+                return null;
+            }
+            string assetName = AssetUtility.GetUIInterfaceAsset(drUIIngameInterface.AssetName);
+            if (!drUIIngameInterface.AllowMultiInstance)
+            {
+                if (uiComponent.IsLoadingUIForm(assetName))
+                {
+                    return null;
+                }
+
+                if (uiComponent.HasUIForm(assetName))
+                {
+                    return null;
+                }
+            }
+            return uiComponent.OpenUIForm(assetName, drUIIngameInterface.UIGroupName, Constant.AssetPriority.UIFormAsset, drUIIngameInterface.PauseCoveredUIForm, userData);
         }
 
         public static void OpenDialog(this UIComponent uiComponent, DialogParams dialogParams)
