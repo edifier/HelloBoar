@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     /// <summary>
     /// uGUI 界面组辅助器。

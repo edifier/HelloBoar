@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     public static partial class Constant
     {

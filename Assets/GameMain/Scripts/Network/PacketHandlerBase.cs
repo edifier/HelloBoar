@@ -7,7 +7,7 @@
 
 using GameFramework.Network;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     public abstract class PacketHandlerBase : IPacketHandler
     {

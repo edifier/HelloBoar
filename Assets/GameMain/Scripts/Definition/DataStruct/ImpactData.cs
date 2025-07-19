@@ -7,7 +7,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     [StructLayout(LayoutKind.Auto)]
     public struct ImpactData

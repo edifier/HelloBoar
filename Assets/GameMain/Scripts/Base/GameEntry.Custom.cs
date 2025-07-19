@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     /// <summary>
     /// 游戏入口。

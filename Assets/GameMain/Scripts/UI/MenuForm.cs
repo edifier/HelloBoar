@@ -8,7 +8,7 @@
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     public class MenuForm : UGuiForm
     {

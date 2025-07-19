@@ -10,7 +10,9 @@ using System;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace StarForce
+using UnityEngine;
+
+namespace GoodbyeWildBoar
 {
     public class ProcedureLaunch : ProcedureBase
     {

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     /// <summary>
     /// 界面编号。
@@ -33,5 +33,9 @@ namespace StarForce
         /// 关于。
         /// </summary>
         AboutForm = 102,
+        /// <summary>
+        /// 游戏内界面
+        /// </summary>
+        IngameInterface = 201,
     }
 }

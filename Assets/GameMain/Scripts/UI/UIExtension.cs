@@ -12,7 +12,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     public static class UIExtension
     {
@@ -127,6 +127,8 @@ namespace StarForce
 
         public static int? OpenUIForm(this UIComponent uiComponent, int uiFormId, object userData = null)
         {
+            Debug.Log(uiFormId);
+            Debug.Log(userData);
             IDataTable<DRUIForm> dtUIForm = GameEntry.DataTable.GetDataTable<DRUIForm>();
             DRUIForm drUIForm = dtUIForm.GetDataRow(uiFormId);
             if (drUIForm == null)
@@ -149,6 +151,9 @@ namespace StarForce
                 }
             }
 
+            Debug.Log(assetName);
+            Debug.Log(Constant.AssetPriority.UIFormAsset);
+            Debug.Log("/*************/");
             return uiComponent.OpenUIForm(assetName, drUIForm.UIGroupName, Constant.AssetPriority.UIFormAsset, drUIForm.PauseCoveredUIForm, userData);
         }
 

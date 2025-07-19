@@ -9,7 +9,7 @@ using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     public class BuiltinDataComponent : GameFrameworkComponent
     {
@@ -48,6 +48,7 @@ namespace StarForce
                 return;
             }
 
+            Debug.Log(m_BuildInfoTextAsset.text);
             m_BuildInfo = Utility.Json.ToObject<BuildInfo>(m_BuildInfoTextAsset.text);
             if (m_BuildInfo == null)
             {

@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     /// <summary>
     /// AI 工具类。
@@ -84,15 +84,14 @@ namespace StarForce
         /// <returns>满足条件的阵营数组。</returns>
         public static CampType[] GetCamps(CampType camp, RelationType relation)
         {
-            KeyValuePair<CampType, RelationType> key = new KeyValuePair<CampType, RelationType>(camp, relation);
-            CampType[] result = null;
-            if (s_CampAndRelationToCamps.TryGetValue(key, out result))
+            KeyValuePair<CampType, RelationType> key = new(camp, relation);
+            if (s_CampAndRelationToCamps.TryGetValue(key, out CampType[] result))
             {
                 return result;
             }
 
             // TODO: GC Alloc
-            List<CampType> camps = new List<CampType>();
+            List<CampType> camps = new();
             Array campTypes = Enum.GetValues(typeof(CampType));
             for (int i = 0; i < campTypes.Length; i++)
             {
@@ -153,22 +152,22 @@ namespace StarForce
                 return;
             }
 
-            Bullet bullet = other as Bullet;
-            if (bullet != null)
-            {
-                ImpactData entityImpactData = entity.GetImpactData();
-                ImpactData bulletImpactData = bullet.GetImpactData();
-                if (GetRelation(entityImpactData.Camp, bulletImpactData.Camp) == RelationType.Friendly)
-                {
-                    return;
-                }
+            // Bullet bullet = other as Bullet;
+            // if (bullet != null)
+            // {
+            //     ImpactData entityImpactData = entity.GetImpactData();
+            //     ImpactData bulletImpactData = bullet.GetImpactData();
+            //     if (GetRelation(entityImpactData.Camp, bulletImpactData.Camp) == RelationType.Friendly)
+            //     {
+            //         return;
+            //     }
 
-                int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
+            //     int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
 
-                entity.ApplyDamage(bullet, entityDamageHP);
-                GameEntry.Entity.HideEntity(bullet);
-                return;
-            }
+            //     entity.ApplyDamage(bullet, entityDamageHP);
+            //     GameEntry.Entity.HideEntity(bullet);
+            //     return;
+            // }
         }
 
         private static int CalcDamageHP(int attack, int defense)

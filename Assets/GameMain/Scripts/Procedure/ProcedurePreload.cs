@@ -13,26 +13,22 @@ using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     public class ProcedurePreload : ProcedureBase
     {
         public static readonly string[] DataTableNames = new string[]
         {
-            "Aircraft",
             "Armor",
-            "Asteroid",
             "Entity",
             "Music",
             "Scene",
             "Sound",
-            "Thruster",
             "UIForm",
             "UISound",
-            "Weapon",
         };
 
-        private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
+        private Dictionary<string, bool> m_LoadedFlag = new();
 
         public override bool UseNativeDialog
         {
@@ -115,6 +111,8 @@ namespace StarForce
         {
             string dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, false);
             m_LoadedFlag.Add(dataTableAssetName, false);
+            Debug.Log(dataTableName);
+            Debug.Log(dataTableAssetName);
             GameEntry.DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
         }
 

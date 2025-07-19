@@ -7,7 +7,7 @@
 
 using GameFramework;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     public static class AssetUtility
     {
@@ -59,6 +59,11 @@ namespace StarForce
         public static string GetUISoundAsset(string assetName)
         {
             return Utility.Text.Format("Assets/GameMain/UI/UISounds/{0}.wav", assetName);
+        }
+
+        public static string GetUIInterfaceAsset(string assetName)
+        {
+            return Utility.Text.Format("Assets/GameMain/UI/UIInterface/{0}.prefab", assetName);
         }
     }
 }

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     /// <summary>
     /// 阵营类型。

@@ -8,7 +8,7 @@
 using System;
 using UnityEngine;
 
-namespace StarForce
+namespace GoodbyeWildBoar
 {
     [Serializable]
     public class EffectData : EntityData
