@@ -31,13 +31,18 @@ namespace StarForce
             if (m_ElapseSeconds >= 1f)
             {
                 m_ElapseSeconds = 0f;
-                IDataTable<DRAsteroid> dtAsteroid = GameEntry.DataTable.GetDataTable<DRAsteroid>();
-                float randomPositionX = SceneBackground.EnemySpawnBoundary.bounds.min.x + SceneBackground.EnemySpawnBoundary.bounds.size.x * (float)Utility.Random.GetRandomDouble();
-                float randomPositionZ = SceneBackground.EnemySpawnBoundary.bounds.min.z + SceneBackground.EnemySpawnBoundary.bounds.size.z * (float)Utility.Random.GetRandomDouble();
-                GameEntry.Entity.ShowAsteroid(new AsteroidData(GameEntry.Entity.GenerateSerialId(), 60000 + Utility.Random.GetRandom(dtAsteroid.Count))
-                {
-                    Position = new Vector3(randomPositionX, 0f, randomPositionZ),
-                });
+                Debug.Log("生成一个行星");
+                // todo: 显示行星实体的代码
+                // 未来可以改成生成野猪的代码，但是问题是对生成数量的限制在哪里控制？
+                // IDataTable<DRAsteroid> dtAsteroid = GameEntry.DataTable.GetDataTable<DRAsteroid>();
+                // float randomPositionX = SceneBackground.EnemySpawnBoundary.bounds.min.x + SceneBackground.EnemySpawnBoundary.bounds.size.x * (float)Utility.Random.GetRandomDouble();
+                // float randomPositionZ = SceneBackground.EnemySpawnBoundary.bounds.min.z + SceneBackground.EnemySpawnBoundary.bounds.size.z * (float)Utility.Random.GetRandomDouble();
+                // GameEntry.Entity.ShowAsteroid(
+                //     new AsteroidData(GameEntry.Entity.GenerateSerialId(), 60000 + Utility.Random.GetRandom(dtAsteroid.Count))
+                //     {
+                //         Position = new Vector3(randomPositionX, 0f, randomPositionZ),
+                //     }
+                // );
             }
         }
     }

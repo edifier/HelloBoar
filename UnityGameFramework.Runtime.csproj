@@ -123,8 +123,8 @@
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\UI\OpenUIFormSuccessEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.EnvironmentInformationWindow.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\DataNode\DataNodeComponent.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Setting\PlayerPrefsSettingHelper.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\BuiltinVersionListSerializer.LocalVersionListSerializeCallback.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Setting\PlayerPrefsSettingHelper.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Utility\DefaultLogHelper.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Config\DefaultConfigHelper.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.LogNode.cs" />
@@ -160,8 +160,8 @@
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Sound\PlaySoundInfo.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Scene\LoadSceneUpdateEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarMaterial.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerActiveWindowType.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\UI\DefaultUIFormHelper.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerActiveWindowType.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarInt32.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\UI\UIFormLogic.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Scene\SceneComponent.cs" />
@@ -174,15 +174,15 @@
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\ResourceVerifyStartEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Sound\SoundAgentHelperBase.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarUInt32.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\DataTable\LoadDataTableSuccessEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\BuiltinVersionListSerializer.ResourcePackVersionListSerializeCallback.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\DataTable\LoadDataTableSuccessEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Scene\LoadSceneFailureEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Entity\ShowEntityDependencyAssetEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\UI\UIComponent.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Localization\LocalizationComponent.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\ResourceUpdateChangedEventArgs.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarDateTime.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Sound\PlaySoundFailureEventArgs.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarDateTime.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.RuntimeMemorySummaryWindow.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarByte.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.RuntimeMemoryInformationWindow.Sample.cs" />
@@ -193,8 +193,8 @@
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.ScrollableDebuggerWindowBase.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\BuiltinVersionListSerializer.UpdatableVersionListTryGetValueCallback.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Utility\DefaultTextHelper.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\WebRequest\WebRequestComponent.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.RuntimeMemorySummaryWindow.Record.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\WebRequest\WebRequestComponent.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\EditorResourceComponent.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\ResourceVerifyFailureEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Setting\DefaultSettingHelper.cs" />
@@ -217,11 +217,11 @@
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.InputLocationInformationWindow.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Config\LoadConfigFailureEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.TimeInformationWindow.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\WebRequest\WWWWebRequestAgentHelper.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Entity\ShowEntitySuccessEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\UI\OpenUIFormUpdateEventArgs.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarSByte.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Entity\ShowEntitySuccessEventArgs.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\WebRequest\WWWWebRequestAgentHelper.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\ReadWritePathType.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarSByte.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Config\ConfigComponent.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Debugger\DebuggerComponent.PathInformationWindow.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarUInt64.cs" />
@@ -252,8 +252,8 @@
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Network\NetworkConnectedEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Sound\DefaultSoundGroupHelper.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\SceneAsset.cs" />
-    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Localization\LocalizationHelperBase.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\DefaultLoadResourceAgentHelper.cs" />
+    <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Localization\LocalizationHelperBase.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Scene\LoadSceneDependencyAssetEventArgs.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Resource\BuiltinVersionListSerializer.LocalVersionListDeserializeCallback.cs" />
     <Compile Include="Assets\UnityGameFramework\Scripts\Runtime\Variable\VarVector2.cs" />
@@ -646,6 +646,10 @@
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.6\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="GameFramework">
+      <HintPath>Assets\UnityGameFramework\Libraries\GameFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.8.2\Lib\Editor\unityplastic.dll</HintPath>
       <Private>False</Private>
@@ -674,16 +678,12 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="GameFramework">
-      <HintPath>Assets\UnityGameFramework\Libraries\GameFramework.dll</HintPath>
+    <Reference Include="LitJson">
+      <HintPath>Assets\GameMain\Libraries\LitJson.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>Assets\UnityGameFramework\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>Assets\GameMain\Libraries\LitJson.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="protobuf-net">

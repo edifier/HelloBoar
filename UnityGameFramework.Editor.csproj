@@ -504,6 +504,10 @@
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.6\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="GameFramework">
+      <HintPath>Assets\UnityGameFramework\Libraries\GameFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.8.2\Lib\Editor\unityplastic.dll</HintPath>
       <Private>False</Private>
@@ -532,16 +536,12 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="GameFramework">
-      <HintPath>Assets\UnityGameFramework\Libraries\GameFramework.dll</HintPath>
+    <Reference Include="LitJson">
+      <HintPath>Assets\GameMain\Libraries\LitJson.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>Assets\UnityGameFramework\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>Assets\GameMain\Libraries\LitJson.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="protobuf-net">
