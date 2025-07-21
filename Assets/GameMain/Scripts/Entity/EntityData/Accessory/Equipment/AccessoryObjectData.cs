@@ -13,10 +13,7 @@ namespace GoodbyeWildBoar
     [Serializable]
     public abstract class AccessoryObjectData : EntityData
     {
-        [SerializeField]
         private int m_OwnerId = 0;
-
-        [SerializeField]
         private CampType m_OwnerCamp = CampType.Unknown;
 
         public AccessoryObjectData(int entityId, int typeId, int ownerId, CampType ownerCamp)

@@ -13,7 +13,6 @@ namespace GoodbyeWildBoar
     [Serializable]
     public class EffectData : EntityData
     {
-        [SerializeField]
         private float m_KeepTime = 0f;
 
         public EffectData(int entityId, int typeId)

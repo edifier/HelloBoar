@@ -13,10 +13,7 @@ namespace GoodbyeWildBoar
     [Serializable]
     public abstract class TargetableObjectData : EntityData
     {
-        [SerializeField]
         private CampType m_Camp = CampType.Unknown;
-
-        [SerializeField]
         private int m_HP = 0;
 
         public TargetableObjectData(int entityId, int typeId, CampType camp)

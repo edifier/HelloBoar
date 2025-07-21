@@ -120,14 +120,14 @@ namespace GoodbyeWildBoar
             return (toTransform.position - fromTransform.position).magnitude;
         }
 
-        public static void PerformCollision(TargetableObject entity, Entity other)
+        public static void PerformCollision(TargetableEntity entity, Entity other)
         {
             if (entity == null || other == null)
             {
                 return;
             }
 
-            TargetableObject target = other as TargetableObject;
+            TargetableEntity target = other as TargetableEntity;
             if (target != null)
             {
                 ImpactData entityImpactData = entity.GetImpactData();

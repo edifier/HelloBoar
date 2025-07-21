@@ -16,7 +16,7 @@ namespace GoodbyeWildBoar
     public abstract class UGuiForm : UIFormLogic
     {
         public const int DepthFactor = 100;
-        private const float FadeTime = Constant.Layer.EnterMainSceneDuration;
+        private const float FadeTime = Constant.UI.EnterMainSceneDuration;
 
         private static Font s_MainFont = null;
         private Canvas m_CachedCanvas = null;

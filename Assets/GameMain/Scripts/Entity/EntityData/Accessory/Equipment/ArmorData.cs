@@ -14,10 +14,7 @@ namespace GoodbyeWildBoar
     [Serializable]
     public class ArmorData : AccessoryObjectData
     {
-        [SerializeField]
         private int m_MaxHP = 0;
-
-        [SerializeField]
         private int m_Defense = 0;
 
         public ArmorData(int entityId, int typeId, int ownerId, CampType ownerCamp)

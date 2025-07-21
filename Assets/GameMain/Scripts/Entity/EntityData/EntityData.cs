@@ -13,16 +13,9 @@ namespace GoodbyeWildBoar
     [Serializable]
     public abstract class EntityData
     {
-        [SerializeField]
         private int m_Id = 0;
-
-        [SerializeField]
         private int m_TypeId = 0;
-
-        [SerializeField]
         private Vector3 m_Position = Vector3.zero;
-
-        [SerializeField]
         private Quaternion m_Rotation = Quaternion.identity;
 
         public EntityData(int entityId, int typeId)
@@ -32,7 +25,7 @@ namespace GoodbyeWildBoar
         }
 
         /// <summary>
-        /// 实体编号。
+        /// 实体编号
         /// </summary>
         public int Id
         {
@@ -43,7 +36,7 @@ namespace GoodbyeWildBoar
         }
 
         /// <summary>
-        /// 实体类型编号。
+        /// 实体类型编号
         /// </summary>
         public int TypeId
         {
@@ -54,7 +47,7 @@ namespace GoodbyeWildBoar
         }
 
         /// <summary>
-        /// 实体位置。
+        /// 实体位置
         /// </summary>
         public Vector3 Position
         {

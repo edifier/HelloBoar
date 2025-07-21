@@ -17,6 +17,7 @@ namespace GoodbyeWildBoar
 {
     public class ProcedurePreload : ProcedureBase
     {
+        // 更新数据时候需要修改这里
         public static readonly string[] DataTableNames = new string[]
         {
             "Armor",
@@ -24,6 +25,8 @@ namespace GoodbyeWildBoar
             "Music",
             "Scene",
             "Sound",
+            "Weapon",
+            "Character",
             "UIForm",
             "UISound",
             "UIIngameInterface",

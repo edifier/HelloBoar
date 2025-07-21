@@ -17,7 +17,8 @@ namespace GoodbyeWildBoar
         // 0 为无效
         // 正值用于和服务器通信的实体（如玩家角色、NPC、怪等，服务器只产生正值）
         // 负值用于本地生成的临时实体（如特效、FakeObject等）
-        private static int s_SerialId = 0;
+        private static int positiveSerialId = 0;
+        private static int negativeSerialId = 0;
 
         public static Entity GetGameEntity(this EntityComponent entityComponent, int entityId)
         {
@@ -64,9 +65,19 @@ namespace GoodbyeWildBoar
             entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetEntityAsset(drEntity.AssetName), entityGroup, priority, data);
         }
 
-        public static int GenerateSerialId(this EntityComponent entityComponent)
+        public static void ShowCharacter(this EntityComponent entityComponent, CharacterData data)
         {
-            return --s_SerialId;
+            entityComponent.ShowEntity(typeof(CharacterEntity), "Character", Constant.AssetPriority.Character, data);
+        }
+
+        public static int GeneratePositiveSerialId(this EntityComponent entityComponent)
+        {
+            return ++positiveSerialId;
+        }
+
+        public static int GenerateNegativeSerialId(this EntityComponent entityComponent)
+        {
+            return --negativeSerialId;
         }
     }
 }
