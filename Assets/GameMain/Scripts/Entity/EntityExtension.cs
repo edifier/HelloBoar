@@ -23,10 +23,7 @@ namespace GoodbyeWildBoar
         public static Entity GetGameEntity(this EntityComponent entityComponent, int entityId)
         {
             UnityGameFramework.Runtime.Entity entity = entityComponent.GetEntity(entityId);
-            if (entity == null)
-            {
-                return null;
-            }
+            if (entity == null) return null;
 
             return (Entity)entity.Logic;
         }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using GameFramework;
 using GameFramework.Fsm;
 using UnityEngine;
 
@@ -8,16 +5,15 @@ namespace GoodbyeWildBoar
 {
     public class CharacterEntity : TargetableEntity
     {
-        [SerializeField] private Animator animator;
-        [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float attackRange = 2f;
+        private Animator animator;
+        private float moveSpeed = 3f;
+        private float attackRange = 2f;
 
         private IFsm<CharacterEntity> characterFsm;
 
         public CharacterData characterData = null;
 
         // 属性访问器
-        public Vector2 MoveDirection { get; private set; }
         public Animator Animator => animator;
         public float MoveSpeed => moveSpeed;
         public float AttackRange => attackRange;
@@ -38,7 +34,8 @@ namespace GoodbyeWildBoar
         {
             base.OnShow(userData);
 
-            Name = Utility.Text.Format("Aircraft ({0})", Id);
+            characterData = userData as CharacterData;
+            Name = $"{characterData.Name} {Id}";
         }
 
         private void InitStateMachine()
@@ -62,25 +59,6 @@ namespace GoodbyeWildBoar
             characterFsm.Start<CharacterIdleState>();
         }
 
-        public void ChangeState(ICharacterStateType newState)
-        {
-            switch (newState)
-            {
-                case ICharacterStateType.Idle:
-                    characterFsm.Start<CharacterIdleState>();
-                    break;
-                case ICharacterStateType.Move:
-                    characterFsm.Start<CharacterMoveState>();
-                    break;
-                case ICharacterStateType.Attack:
-                    characterFsm.Start<CharacterAttackState>();
-                    break;
-                case ICharacterStateType.Death:
-                    characterFsm.Start<CharacterDeathState>();
-                    break;
-            }
-        }
-        
         public override ImpactData GetImpactData()
         {
             return new ImpactData(characterData.Camp, characterData.HP, 0, characterData.Defense);

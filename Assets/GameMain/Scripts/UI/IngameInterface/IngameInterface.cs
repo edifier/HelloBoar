@@ -21,6 +21,9 @@ namespace GoodbyeWildBoar
 
             joystickBGPos = transform.GetChild(0) as RectTransform;
             joystickPos = joystickBGPos.GetChild(0) as RectTransform;
+
+            // 初始值
+            SetJoystickDataNode(Vector2.zero);
         }
 
         protected override void OnOpen(object userData)
@@ -49,14 +52,7 @@ namespace GoodbyeWildBoar
 
             joystickPos.localPosition = outPos;
             // 保存在全局，供player做移动
-            VarVector2 directionVar = new VarVector2();
-            directionVar.Value = outPos;
-            VarSingle directionAngle = new VarSingle();
-            directionAngle.Value = Vector2ToAngle(outPos.normalized);
-            // 保存[-1, 1]的二维向量
-            GameEntry.DataNode.SetData("Input.Joystick.Direction", directionVar);
-            // 保存0-360度的角度，[1, 0]方向为0度，[0, 1]方向为90度
-            GameEntry.DataNode.SetData("Input.Joystick.DirectionAngle", directionAngle);
+            SetJoystickDataNode(outPos);
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -100,6 +96,14 @@ namespace GoodbyeWildBoar
                 joystickBGPos.anchoredPosition = new Vector2(232, 215);
             else
                 joystickBGPos.anchoredPosition = new Vector2(547, 244);
+        }
+
+        private void SetJoystickDataNode(Vector2 _pos)
+        {
+            // 保存[-1, 1]的二维向量
+            DataNodeExtension.SetInputJoystickDirection(_pos.normalized);
+            // 保存0-360度的角度，[1, 0]方向为0度，[0, 1]方向为90度
+            DataNodeExtension.SetInputJoystickDirectionAngle(Vector2ToAngle(_pos.normalized));
         }
 
         private static float Vector2ToAngle(Vector2 direction)

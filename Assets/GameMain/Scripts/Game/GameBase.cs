@@ -47,6 +47,7 @@ namespace GoodbyeWildBoar
             GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
             GameOver = false;
+            DataNodeExtension.SetCharacterEntityId(-1);
         }
 
         public virtual void Shutdown()
@@ -75,9 +76,9 @@ namespace GoodbyeWildBoar
             ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs)e;
             if (ne.EntityLogicType == typeof(CharacterEntity))
             {
-                Debug.Log(ne.Entity.Logic);
-                Debug.Log("/************/");
                 m_Character = (CharacterEntity)ne.Entity.Logic;
+                // 保存characterId，通过id可以获取Character
+                DataNodeExtension.SetCharacterEntityId(m_Character.Id);
             }
         }
 
