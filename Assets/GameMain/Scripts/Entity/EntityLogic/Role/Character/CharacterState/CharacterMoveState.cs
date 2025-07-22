@@ -7,7 +7,7 @@ using UnityGameFramework.Runtime;
 
 namespace GoodbyeWildBoar
 {
-    public class CharacterMoveState : CharacterBaseState
+    public class CharacterMoveState : CharacterAttackDecision
     {
         private static readonly int runHash = Animator.StringToHash("Run");
 
@@ -39,7 +39,7 @@ namespace GoodbyeWildBoar
         {
             base.OnLeave(_fsm, isShutdown);
 
-            fsm.Owner.Animator.ResetTrigger(runHash);
+            character.Animator.ResetTrigger(runHash);
             GameEntry.Event.Unsubscribe(JoystickEventArgs.EventId, JoystickEvtEndHandle);
         }
 
@@ -55,9 +55,9 @@ namespace GoodbyeWildBoar
         {
             // 转头
             Vector3 _rotation = new Vector3(_direction.x, 0, _direction.y);
-            fsm.Owner.transform.rotation = Quaternion.LookRotation(_rotation);
+            character.transform.rotation = Quaternion.LookRotation(_rotation);
             // 向前走
-            fsm.Owner.transform.Translate(Vector3.forward * fsm.Owner.MoveSpeed * Time.fixedDeltaTime);
+            character.transform.Translate(Vector3.forward * character.MoveSpeed * Time.fixedDeltaTime);
         }
     }
 }

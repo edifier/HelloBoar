@@ -9,6 +9,8 @@ using GameFramework.DataTable;
 using System;
 using UnityGameFramework.Runtime;
 
+using UnityEngine;
+
 namespace GoodbyeWildBoar
 {
     public static class EntityExtension
@@ -38,10 +40,10 @@ namespace GoodbyeWildBoar
             entityComponent.AttachEntity(entity.Entity, ownerId, parentTransformPath, userData);
         }
 
-        public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
-        {
-            entityComponent.ShowEntity(typeof(Effect), "Effect", Constant.AssetPriority.EffectAsset, data);
-        }
+        // public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
+        // {
+        //     entityComponent.ShowEntity(typeof(Effect), "Effect", Constant.AssetPriority.EffectAsset, data);
+        // }
 
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
         {
@@ -65,6 +67,11 @@ namespace GoodbyeWildBoar
         public static void ShowCharacter(this EntityComponent entityComponent, CharacterData data)
         {
             entityComponent.ShowEntity(typeof(CharacterEntity), "Character", Constant.AssetPriority.Character, data);
+        }
+
+        public static void ShowWildBoar(this EntityComponent entityComponent, WildBoarData data)
+        {
+            entityComponent.ShowEntity(typeof(WildBoarEntity), "WildBoar", Constant.AssetPriority.WildBoar, data);
         }
 
         public static int GeneratePositiveSerialId(this EntityComponent entityComponent)

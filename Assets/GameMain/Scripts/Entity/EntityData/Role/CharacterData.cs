@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using GameFramework.DataTable;
-using UnityEngine;
 
 namespace GoodbyeWildBoar
 {
@@ -28,10 +26,7 @@ namespace GoodbyeWildBoar
         {
             IDataTable<DRCharacter> dtCharacter = GameEntry.DataTable.GetDataTable<DRCharacter>();
             DRCharacter drCharacter = dtCharacter.GetDataRow(TypeId);
-            if (drCharacter == null)
-            {
-                return;
-            }
+            if (drCharacter == null) return;
 
             for (int index = 0, weaponId = 0; (weaponId = drCharacter.GetWeaponIdAt(index)) > 0; index++)
             {

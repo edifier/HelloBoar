@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityGameFramework.Runtime;
-
 
 namespace GoodbyeWildBoar
 {
@@ -10,7 +6,7 @@ namespace GoodbyeWildBoar
     {
         private CharacterEntity character = null;
 
-        private Vector3 cermaOffset;
+        private Vector3 cermaOffset = Vector3.zero;
         private readonly static float smoothSpeed = 0.5f;
 
         private void Awake()
@@ -41,6 +37,12 @@ namespace GoodbyeWildBoar
                 // 执行移动
                 transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
             }
+        }
+
+        private void OnDestory()
+        {
+            character = null;
+            cermaOffset = Vector3.zero;
         }
     }
 }

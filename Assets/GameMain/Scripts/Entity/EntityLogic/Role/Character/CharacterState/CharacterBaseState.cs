@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using GameFramework.Fsm;
-using UnityEngine;
+using GameFramework.Fsm;    
 
 namespace GoodbyeWildBoar
 {
@@ -11,11 +8,13 @@ namespace GoodbyeWildBoar
         /// 提供给自定义方法内使用
         /// </summary>
         public IFsm<CharacterEntity> fsm;
+        protected CharacterEntity character;
 
         protected override void OnInit(IFsm<CharacterEntity> _fsm)
         {
             base.OnInit(_fsm);
             fsm = _fsm;
+            character = _fsm.Owner;
         }
     }
 }

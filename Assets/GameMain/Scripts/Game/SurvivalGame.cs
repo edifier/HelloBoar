@@ -7,6 +7,7 @@
 
 using GameFramework;
 using GameFramework.DataTable;
+using GameFramework.Entity;
 using UnityEngine;
 
 namespace GoodbyeWildBoar
@@ -14,6 +15,8 @@ namespace GoodbyeWildBoar
     public class SurvivalGame : GameBase
     {
         private float m_ElapseSeconds = 0f;
+        private IEntityGroup entityGroup = null;
+        private int maximum = Constant.SurvivalGame.WildBoarMaxNum;
 
         public override GameMode GameMode
         {
@@ -23,27 +26,37 @@ namespace GoodbyeWildBoar
             }
         }
 
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            // 通过组名获取实体组实例
+            entityGroup = GameEntry.Entity.GetEntityGroup("WildBoar");
+        }
+
         public override void Update(float elapseSeconds, float realElapseSeconds)
         {
             base.Update(elapseSeconds, realElapseSeconds);
 
             m_ElapseSeconds += elapseSeconds;
-            if (m_ElapseSeconds >= 1f)
+            if (m_ElapseSeconds >= Constant.SurvivalGame.InitWildBoarInterval && entityGroup.EntityCount < maximum)
             {
                 m_ElapseSeconds = 0f;
-                Debug.Log("生成一个野猪");
-                // todo: 显示行星实体的代码
-                // 未来可以改成生成野猪的代码，但是问题是对生成数量的限制在哪里控制？
-                // IDataTable<DRAsteroid> dtAsteroid = GameEntry.DataTable.GetDataTable<DRAsteroid>();
-                // float randomPositionX = SceneBackground.EnemySpawnBoundary.bounds.min.x + SceneBackground.EnemySpawnBoundary.bounds.size.x * (float)Utility.Random.GetRandomDouble();
-                // float randomPositionZ = SceneBackground.EnemySpawnBoundary.bounds.min.z + SceneBackground.EnemySpawnBoundary.bounds.size.z * (float)Utility.Random.GetRandomDouble();
-                // GameEntry.Entity.ShowAsteroid(
-                //     new AsteroidData(GameEntry.Entity.GeneratePositiveSerialId(), 60000 + Utility.Random.GetRandom(dtAsteroid.Count))
-                //     {
-                //         Position = new Vector3(randomPositionX, 0f, randomPositionZ),
-                //     }
-                // );
+                ShowWildBoar();
             }
+        }
+
+        private void ShowWildBoar()
+        {
+            IDataTable<DRWildBoar> dtWildBoar = GameEntry.DataTable.GetDataTable<DRWildBoar>();
+            float randomPositionX = mainAssistant.enemySpawnBoundary.bounds.min.x + mainAssistant.enemySpawnBoundary.bounds.size.x * (float)Utility.Random.GetRandomDouble();
+            float randomPositionZ = mainAssistant.enemySpawnBoundary.bounds.min.z + mainAssistant.enemySpawnBoundary.bounds.size.z * (float)Utility.Random.GetRandomDouble();
+            GameEntry.Entity.ShowWildBoar(
+                new WildBoarData(GameEntry.Entity.GeneratePositiveSerialId(), 60000 + Utility.Random.GetRandom(dtWildBoar.Count))
+                {
+                    Position = new Vector3(randomPositionX, 0f, randomPositionZ),
+                }
+            );
         }
     }
 }

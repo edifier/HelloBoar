@@ -27,7 +27,7 @@ namespace GoodbyeWildBoar
             public const int Character = 90;
             public const int WeaponAsset = 30;
             public const int ArmorAsset = 30;
-            public const int Enemy = 80;
+            public const int WildBoar = 80;
             public const int EffectAsset = 80;
         }
     }

@@ -27,26 +27,19 @@ namespace GoodbyeWildBoar
 
         public abstract ImpactData GetImpactData();
 
-        public void ApplyDamage(Entity attacker, int damageHP)
+        public void ApplyDamage(int damageHP)
         {
             float fromHPRatio = m_TargetableObjectData.HPRatio;
             m_TargetableObjectData.HP -= damageHP;
             float toHPRatio = m_TargetableObjectData.HPRatio;
-            if (fromHPRatio > toHPRatio)
-            {
-                GameEntry.HPBar.ShowHPBar(this, fromHPRatio, toHPRatio);
-            }
 
-            if (m_TargetableObjectData.HP <= 0)
-            {
-                OnDead(attacker);
-            }
+            if (fromHPRatio > toHPRatio)
+                GameEntry.HPBar.ShowHPBar(this, fromHPRatio, toHPRatio);
         }
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-            gameObject.SetLayerRecursively(Constant.Layer.TargetableObjectLayerId);
         }
 
         protected override void OnShow(object userData)
@@ -61,26 +54,19 @@ namespace GoodbyeWildBoar
             }
         }
 
-        protected virtual void OnDead(Entity attacker)
-        {
-            GameEntry.Entity.HideEntity(this);
-        }
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     Entity entity = other.gameObject.GetComponent<Entity>();
+        //     if (entity == null)
+        //         return;
 
-        private void OnTriggerEnter(Collider other)
-        {
-            Entity entity = other.gameObject.GetComponent<Entity>();
-            if (entity == null)
-            {
-                return;
-            }
+        //     if (entity is TargetableEntity && entity.Id >= Id)
+        //     {
+        //         // 碰撞事件由 Id 小的一方处理，避免重复处理
+        //         return;
+        //     }
 
-            if (entity is TargetableEntity && entity.Id >= Id)
-            {
-                // 碰撞事件由 Id 小的一方处理，避免重复处理
-                return;
-            }
-
-            AIUtility.PerformCollision(this, entity);
-        }
+        //     AIUtility.PerformCollision(this, entity);
+        // }
     }
 }

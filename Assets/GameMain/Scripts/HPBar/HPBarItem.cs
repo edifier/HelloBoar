@@ -15,8 +15,6 @@ namespace GoodbyeWildBoar
     public class HPBarItem : MonoBehaviour
     {
         private const float AnimationSeconds = 0.3f;
-        private const float KeepSeconds = 0.4f;
-        private const float FadeOutSeconds = 0.3f;
 
         [SerializeField]
         private Slider m_HPBar = null;
@@ -26,6 +24,7 @@ namespace GoodbyeWildBoar
         private CanvasGroup m_CachedCanvasGroup = null;
         private Entity m_Owner = null;
         private int m_OwnerId = 0;
+        private MainAssistant mainAssistant;
 
         public Entity Owner
         {
@@ -58,19 +57,16 @@ namespace GoodbyeWildBoar
 
             Refresh();
 
-            StartCoroutine(HPBarCo(toHPRatio, AnimationSeconds, KeepSeconds, FadeOutSeconds));
+            StartCoroutine(HPBarCo(toHPRatio, AnimationSeconds));
         }
 
         public bool Refresh()
         {
-            if (m_CachedCanvasGroup.alpha <= 0f)
-            {
-                return false;
-            }
+            if (m_CachedCanvasGroup.alpha <= 0f) return false;
 
             if (m_Owner != null && Owner.Available && Owner.Id == m_OwnerId)
             {
-                Vector3 worldPosition = m_Owner.CachedTransform.position + Vector3.forward;
+                Vector3 worldPosition = m_Owner.CachedTransform.position + new Vector3(0f, 2f, 0f);
                 Vector3 screenPosition = GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
 
                 Vector2 position;
@@ -110,11 +106,15 @@ namespace GoodbyeWildBoar
             }
         }
 
-        private IEnumerator HPBarCo(float value, float animationDuration, float keepDuration, float fadeOutDuration)
+        private IEnumerator HPBarCo(float value, float animationDuration)
         {
             yield return m_HPBar.SmoothValue(value, animationDuration);
-            yield return new WaitForSeconds(keepDuration);
-            yield return m_CachedCanvasGroup.FadeToAlpha(0f, fadeOutDuration);
+        }
+
+        private void LateUpdate()
+        {
+            // 保证血条位置在Entity上
+            Refresh();
         }
     }
 }

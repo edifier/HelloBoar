@@ -20,7 +20,6 @@ namespace GoodbyeWildBoar
         [SerializeField]
         private Transform m_HPBarInstanceRoot = null;
 
-        [SerializeField]
         private int m_InstancePoolCapacity = 16;
 
         private IObjectPool<HPBarItemObject> m_HPBarItemObjectPool = null;
@@ -40,24 +39,12 @@ namespace GoodbyeWildBoar
             m_ActiveHPBarItems = new List<HPBarItem>();
         }
 
-        private void OnDestroy()
-        {
-        }
-
-        private void Update()
-        {
-            for (int i = m_ActiveHPBarItems.Count - 1; i >= 0; i--)
-            {
-                HPBarItem hpBarItem = m_ActiveHPBarItems[i];
-                if (hpBarItem.Refresh())
-                {
-                    continue;
-                }
-
-                HideHPBar(hpBarItem);
-            }
-        }
-
+        /// <summary>
+        /// 显示血条并初始化血量
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="fromHPRatio"></param>
+        /// <param name="toHPRatio"></param>
         public void ShowHPBar(Entity entity, float fromHPRatio, float toHPRatio)
         {
             if (entity == null)
@@ -76,8 +63,13 @@ namespace GoodbyeWildBoar
             hpBarItem.Init(entity, m_CachedCanvas, fromHPRatio, toHPRatio);
         }
 
-        private void HideHPBar(HPBarItem hpBarItem)
+        /// <summary>
+        /// 隐藏血条
+        /// </summary>
+        /// <param name="entity"></param>
+        public void HideHPBar(Entity entity)
         {
+            HPBarItem hpBarItem = GetActiveHPBarItem(entity);
             hpBarItem.Reset();
             m_ActiveHPBarItems.Remove(hpBarItem);
             m_HPBarItemObjectPool.Unspawn(hpBarItem);
@@ -85,10 +77,7 @@ namespace GoodbyeWildBoar
 
         private HPBarItem GetActiveHPBarItem(Entity entity)
         {
-            if (entity == null)
-            {
-                return null;
-            }
+            if (entity == null) return null;
 
             for (int i = 0; i < m_ActiveHPBarItems.Count; i++)
             {

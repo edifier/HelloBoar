@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GameFramework.Fsm;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace GoodbyeWildBoar
 {
     public class CharacterEntity : TargetableEntity
     {
-        private Animator animator;
+        public Animator animator;
         private float moveSpeed = 3f;
         private float attackRange = 2f;
 
@@ -17,6 +18,11 @@ namespace GoodbyeWildBoar
         public Animator Animator => animator;
         public float MoveSpeed => moveSpeed;
         public float AttackRange => attackRange;
+
+        public List<Entity> hitEntityList = new();
+        public bool inAttackProcess = false;
+        public bool inDeathProcess = false;
+
 
         protected override void OnInit(object userData)
         {
@@ -61,7 +67,35 @@ namespace GoodbyeWildBoar
 
         public override ImpactData GetImpactData()
         {
-            return new ImpactData(characterData.Camp, characterData.HP, 0, characterData.Defense);
+            return new ImpactData(characterData.Camp, characterData.HP, characterData.Attack, characterData.Defense);
+        }
+
+        /// <summary>
+        /// 被伤害实体列表赋值
+        /// CharacterAttackDecision里面赋值
+        /// CharacterAttackState里面消费
+        /// </summary>
+        /// <param name="_hitInfo"></param>
+        public void SetHitEntityList(RaycastHit[] _hitInfo)
+        {
+            hitEntityList.Clear();
+            for (int i = 0; i < _hitInfo.Length; i++)
+            {
+                RaycastHit item = _hitInfo[i];
+                if (item.collider != null)
+                {
+                    WildBoarEntity wildBoar = item.collider.GetComponent<WildBoarEntity>();
+                    if (!wildBoar.inDeathProcess)
+                        hitEntityList.Add(item.collider.GetComponent<Entity>());
+                }
+            }
+        }
+
+        public void ResetData()
+        {
+            hitEntityList.Clear();
+            inAttackProcess = false;
+            inDeathProcess = false;
         }
     }
 }

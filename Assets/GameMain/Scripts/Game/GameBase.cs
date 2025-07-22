@@ -39,6 +39,12 @@ namespace GoodbyeWildBoar
         private bool gameHasInit;
         private float timer = 0f;
 
+        /// <summary>
+        /// 目前只有主场景
+        /// todo: 未来如果有多个场景，再拓展
+        /// </summary>
+        protected MainAssistant mainAssistant;
+
         protected const float gameReadyDelayedSeconds = Constant.UI.EnterMainSceneDuration;
 
         public virtual void Initialize()
@@ -47,7 +53,10 @@ namespace GoodbyeWildBoar
             GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
             GameOver = false;
+            // 初始化CharacterEntityId的路径，避免找不到路径问题
             DataNodeExtension.SetCharacterEntityId(-1);
+            // 获取场景助手的引用
+            mainAssistant = Object.FindObjectOfType<MainAssistant>();
         }
 
         public virtual void Shutdown()

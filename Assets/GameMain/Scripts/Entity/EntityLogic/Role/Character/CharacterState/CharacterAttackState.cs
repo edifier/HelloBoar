@@ -8,6 +8,7 @@ namespace GoodbyeWildBoar
     public class CharacterAttackState : CharacterBaseState
     {
         private static readonly int attackHash = Animator.StringToHash("Attack");
+        private bool hasPerformDamage = false;
 
         protected override void OnInit(IFsm<CharacterEntity> _fsm)
         {
@@ -18,20 +19,41 @@ namespace GoodbyeWildBoar
         {
             base.OnEnter(_fsm);
 
-            // 播放待机动画
-            _fsm.Owner.Animator.SetTrigger(attackHash);
-            Debug.Log("进入攻击状态");
+            // 播放攻击动画
+            character.Animator.SetTrigger(attackHash);
+            character.inAttackProcess = true;
         }
-        
+
         protected override void OnUpdate(IFsm<CharacterEntity> _fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(_fsm, elapseSeconds, realElapseSeconds);
+
+            // 动画进行50%，结算伤害
+            AnimatorStateInfo currentStateInfo = character.Animator.GetCurrentAnimatorStateInfo(0);
+            if (currentStateInfo.normalizedTime >= .55f && !hasPerformDamage)
+            {
+                hasPerformDamage = true;
+                PerformDamage();
+            }
+
+            // 动画结束，进入等待状态
+            if (currentStateInfo.normalizedTime >= .95f)
+                ChangeState<CharacterIdleState>(_fsm);
         }
 
         protected override void OnLeave(IFsm<CharacterEntity> _fsm, bool isShutdown)
         {
             base.OnLeave(_fsm, isShutdown);
-            Debug.Log("离开攻击状态");
+
+            hasPerformDamage = false;
+            character.inAttackProcess = false;
+            character.Animator.ResetTrigger(attackHash);
+        }
+
+        private void PerformDamage()
+        {
+            foreach (Entity hitEntity in fsm.Owner.hitEntityList)
+                AIUtility.PerformDamage(fsm.Owner, hitEntity);
         }
     }
 }

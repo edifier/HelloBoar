@@ -120,67 +120,30 @@ namespace GoodbyeWildBoar
             return (toTransform.position - fromTransform.position).magnitude;
         }
 
-        public static void PerformCollision(TargetableEntity entity, Entity other)
+        public static void PerformDamage(TargetableEntity attacker, Entity hitEntity)
         {
-            if (entity == null || other == null)
-            {
-                return;
-            }
+            if (attacker == null || hitEntity == null) return;
 
-            TargetableEntity target = other as TargetableEntity;
+            TargetableEntity target = hitEntity as TargetableEntity;
             if (target != null)
             {
-                ImpactData entityImpactData = entity.GetImpactData();
-                ImpactData targetImpactData = target.GetImpactData();
-                if (GetRelation(entityImpactData.Camp, targetImpactData.Camp) == RelationType.Friendly)
-                {
-                    return;
-                }
+                ImpactData attackerImpactData = attacker.GetImpactData();
+                ImpactData hitImpactData = target.GetImpactData();
+                if (GetRelation(attackerImpactData.Camp, hitImpactData.Camp) == RelationType.Friendly) return;
 
-                int entityDamageHP = CalcDamageHP(targetImpactData.Attack, entityImpactData.Defense);
-                int targetDamageHP = CalcDamageHP(entityImpactData.Attack, targetImpactData.Defense);
-
-                int delta = Mathf.Min(entityImpactData.HP - entityDamageHP, targetImpactData.HP - targetDamageHP);
-                if (delta > 0)
-                {
-                    entityDamageHP += delta;
-                    targetDamageHP += delta;
-                }
-
-                entity.ApplyDamage(target, entityDamageHP);
-                target.ApplyDamage(entity, targetDamageHP);
+                int targetDamageHP = CalcDamageHP(attackerImpactData.Attack, hitImpactData.Defense);
+                target.ApplyDamage(targetDamageHP);
                 return;
             }
-
-            // Bullet bullet = other as Bullet;
-            // if (bullet != null)
-            // {
-            //     ImpactData entityImpactData = entity.GetImpactData();
-            //     ImpactData bulletImpactData = bullet.GetImpactData();
-            //     if (GetRelation(entityImpactData.Camp, bulletImpactData.Camp) == RelationType.Friendly)
-            //     {
-            //         return;
-            //     }
-
-            //     int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
-
-            //     entity.ApplyDamage(bullet, entityDamageHP);
-            //     GameEntry.Entity.HideEntity(bullet);
-            //     return;
-            // }
         }
 
         private static int CalcDamageHP(int attack, int defense)
         {
             if (attack <= 0)
-            {
                 return 0;
-            }
 
             if (defense < 0)
-            {
                 defense = 0;
-            }
 
             return attack * attack / (attack + defense);
         }

@@ -82,14 +82,19 @@
     <Compile Include="Assets\GameMain\Scripts\Network\PacketType.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterEntity.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterState\CharacterIdleState.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarState\WildBoarAlertState.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\Extension\BinaryReaderExtension.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarState\WildBoarDeathState.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRWeapon.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarState\WildBoarMoveState.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRMusic.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarState\WildBoarBaseState.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DREntity.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\LitJsonHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\Enum\CampType.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Accessory\Effect\Effect.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\Role\CharacterData.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarState\WildBoarIdleState.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\SurvivalGame.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureCheckVersion.cs" />
     <Compile Include="Assets\GameMain\Scripts\Sound\SoundExtension.cs" />
@@ -100,10 +105,13 @@
     <Compile Include="Assets\GameMain\Scripts\Network\Packet\SCHeartBeat.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\Constant\Constant.AssetPriority.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\DataStruct\VersionInfo.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\Role\WildBoarData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Accessory\Equipment\Armor.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureVerifyResources.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedurePreload.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterState\CharacterAttackDecision.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureMenu.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarEntity.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureChangeScene.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\UGuiForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\CSPacketHeader.cs" />
@@ -111,6 +119,7 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\TargetableEntity.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\IngameInterface\IngameInterface.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\Accessory\Equipment\WeaponData.cs" />
+    <Compile Include="Assets\GameMain\Scripts\DataTable\DRWildBoar.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\SCPacketHeader.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureUpdateResources.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\PacketHandlerBase.cs" />
@@ -118,8 +127,6 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRCharacter.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\DialogForm.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Scene\ScrollableBackground.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Definition\Constant\Constant.UI.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRUIIngameInterface.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterState\CharacterAttackState.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\NetworkChannelHelper.cs" />
@@ -133,6 +140,7 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterState\CharacterDeathState.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureSplash.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\AboutForm.cs" />
+    <Compile Include="Assets\GameMain\Scripts\SceneAssistant\MainAssistant.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\DataStruct\BuildInfo.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\PacketHeaderBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\Accessory\Equipment\ArmorData.cs" />
@@ -140,6 +148,7 @@
     <Compile Include="Assets\GameMain\Scripts\UI\UIFormId.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\AssetUtility.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterState\CharacterMoveState.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarState\WildBoarAttackState.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\Accessory\Equipment\AccessoryObjectData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureCheckResources.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\PacketBase.cs" />
@@ -151,6 +160,7 @@
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureLaunch.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRScene.cs" />
     <Compile Include="Assets\GameMain\Scripts\Base\GameEntry.Custom.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Definition\Constant\Constant.Game.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\IngameInterface\IJoystickEventType.cs" />
     <Compile Include="Assets\GameMain\Scripts\BuiltinData\BuiltinDataComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\MenuForm.cs" />
@@ -176,6 +186,7 @@
     <None Include="Assets\GameMain\DataTables\UIForm.txt" />
     <None Include="Assets\GameMain\Configs\DataTableCodeTemplate.txt" />
     <None Include="Assets\UnityGameFramework\Libraries\GameFramework.xml" />
+    <None Include="Assets\GameMain\DataTables\WildBoar.txt" />
     <None Include="Assets\GameMain\DataTables\Sound.txt" />
     <None Include="Assets\GameMain\DataTables\Scene.txt" />
     <None Include="Assets\GameMain\Configs\BuildSettings.xml" />

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GoodbyeWildBoar
 {
-    public class CharacterIdleState : CharacterBaseState
+    public class CharacterIdleState : CharacterAttackDecision
     {
         private static readonly int IdleHash = Animator.StringToHash("Idle");
 
@@ -20,7 +20,7 @@ namespace GoodbyeWildBoar
             base.OnEnter(_fsm);
 
             // 播放待机动画
-            fsm.Owner.Animator.SetTrigger(IdleHash);
+            character.Animator.SetTrigger(IdleHash);
             // 监听摇杆激活事件
             GameEntry.Event.Subscribe(JoystickEventArgs.EventId, JoystickEvtStartHandle);
         }
@@ -34,7 +34,7 @@ namespace GoodbyeWildBoar
         {
             base.OnLeave(_fsm, isShutdown);
 
-            fsm.Owner.Animator.ResetTrigger(IdleHash);
+            character.Animator.ResetTrigger(IdleHash);
             GameEntry.Event.Unsubscribe(JoystickEventArgs.EventId, JoystickEvtStartHandle);
         }
 
