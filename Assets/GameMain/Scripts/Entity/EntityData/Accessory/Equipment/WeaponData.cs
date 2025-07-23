@@ -7,7 +7,6 @@
 
 using GameFramework.DataTable;
 using System;
-using UnityEngine;
 
 namespace GoodbyeWildBoar
 {

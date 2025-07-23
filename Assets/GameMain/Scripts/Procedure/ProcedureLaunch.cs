@@ -10,8 +10,6 @@ using System;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-using UnityEngine;
-
 namespace GoodbyeWildBoar
 {
     public class ProcedureLaunch : ProcedureBase

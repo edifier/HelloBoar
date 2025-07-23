@@ -1,8 +1,6 @@
 using System;
 using GameFramework.DataTable;
 
-using UnityEngine;
-
 namespace GoodbyeWildBoar
 {
     [Serializable]

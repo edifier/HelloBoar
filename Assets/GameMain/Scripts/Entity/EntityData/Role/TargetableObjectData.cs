@@ -6,7 +6,6 @@
 //------------------------------------------------------------
 
 using System;
-using UnityEngine;
 
 namespace GoodbyeWildBoar
 {

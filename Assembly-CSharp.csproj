@@ -77,8 +77,6 @@
     <Compile Include="Assets\GameMain\Scripts\Definition\Constant\Constant.Setting.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\Extension\DataTableExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRSound.cs" />
-    <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarItem.cs" />
-    <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarItemObject.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\PacketType.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterEntity.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterState\CharacterIdleState.cs" />
@@ -94,12 +92,14 @@
     <Compile Include="Assets\GameMain\Scripts\Definition\Enum\CampType.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Accessory\Effect\Effect.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\Role\CharacterData.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UI\HPBar\HPBarItemObject.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\WildBoar\WildBoarState\WildBoarIdleState.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\SurvivalGame.cs" />
     <Compile Include="Assets\GameMain\Scripts\Procedure\ProcedureCheckVersion.cs" />
     <Compile Include="Assets\GameMain\Scripts\Sound\SoundExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Role\Character\CharacterState\CharacterBaseState.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\DataStruct\ImpactData.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UI\HPBar\HPBarComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\DialogParams.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRUIForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\Packet\SCHeartBeat.cs" />
@@ -125,6 +125,7 @@
     <Compile Include="Assets\GameMain\Scripts\Network\PacketHandlerBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\Constant\Constant.Layer.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityExtension.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UI\HPBar\HPBarItem.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRCharacter.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\DialogForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\DataTable\DRUIIngameInterface.cs" />
@@ -166,7 +167,6 @@
     <Compile Include="Assets\GameMain\Scripts\UI\MenuForm.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\SCPacketBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\EntityData.cs" />
-    <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\IngameInterface\JoystickEventArgs.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\UGuiGroupHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\Debugger\ChangeLanguageDebuggerWindow.cs" />

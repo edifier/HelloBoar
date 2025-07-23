@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using GameFramework.DataTable;
 
+using UnityEngine;
+
 namespace GoodbyeWildBoar
 {
     [Serializable]
@@ -40,7 +42,7 @@ namespace GoodbyeWildBoar
 
             m_DeadSoundId = drCharacter.DeadSoundId;
             // 初始最大生命值
-            m_MaxHP = drCharacter.HP;
+            m_MaxHP += drCharacter.HP;
             // 初始化时最大生命即当前生命
             HP = m_MaxHP;
         }

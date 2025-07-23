@@ -21,7 +21,6 @@ namespace GoodbyeWildBoar
 
             // 播放攻击动画
             character.Animator.SetTrigger(attackHash);
-            character.inAttackProcess = true;
         }
 
         protected override void OnUpdate(IFsm<CharacterEntity> _fsm, float elapseSeconds, float realElapseSeconds)

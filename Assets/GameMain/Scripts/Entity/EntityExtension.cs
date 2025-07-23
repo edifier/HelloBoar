@@ -9,8 +9,6 @@ using GameFramework.DataTable;
 using System;
 using UnityGameFramework.Runtime;
 
-using UnityEngine;
-
 namespace GoodbyeWildBoar
 {
     public static class EntityExtension
@@ -39,11 +37,6 @@ namespace GoodbyeWildBoar
         {
             entityComponent.AttachEntity(entity.Entity, ownerId, parentTransformPath, userData);
         }
-
-        // public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
-        // {
-        //     entityComponent.ShowEntity(typeof(Effect), "Effect", Constant.AssetPriority.EffectAsset, data);
-        // }
 
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
         {

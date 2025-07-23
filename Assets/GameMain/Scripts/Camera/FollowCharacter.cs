@@ -30,13 +30,11 @@ namespace GoodbyeWildBoar
 
         private void LateUpdate()
         {
-            if (character != null)
-            {
-                Vector3 characterPos = character.transform.localPosition;
-                Vector3 targetPosition = new Vector3(cermaOffset.x + characterPos.x, cermaOffset.y, cermaOffset.z + characterPos.z);
-                // 执行移动
-                transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
-            }
+            if (character == null) return;
+            Vector3 characterPos = character.transform.localPosition;
+            Vector3 targetPosition = new Vector3(cermaOffset.x + characterPos.x, cermaOffset.y, cermaOffset.z + characterPos.z);
+            // 执行移动
+            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
         }
 
         private void OnDestory()

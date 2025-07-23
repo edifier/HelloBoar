@@ -11,10 +11,11 @@ namespace GoodbyeWildBoar
         // 属性访问器
         public Animator Animator => animator;
         public float MoveSpeed => moveSpeed;
-        public bool entityReady = false;
+        public bool wildBoarReady = false;
         public bool inDeathProcess = false;
         public bool inAttackProcess = false;
         public CharacterEntity character = null;
+        public float resetTime = -1f;
 
         private Animator animator;
         private float moveSpeed;
@@ -70,7 +71,7 @@ namespace GoodbyeWildBoar
             coroutine = StartCoroutine(SetLayerRecursivelyInDelay(userData));
         }
 
-        private void OnDestory()
+        private void OnDestroy()
         {
             StopCoroutine(coroutine);
             coroutine = null;
@@ -86,12 +87,12 @@ namespace GoodbyeWildBoar
             var targetableObjectData = userData as TargetableObjectData;
             GameEntry.HPBar.ShowHPBar(this, targetableObjectData.HPRatio, targetableObjectData.HPRatio);
             // 实体初始化完成
-            entityReady = true;
+            wildBoarReady = true;
         }
 
         public void ResetData()
         {
-            entityReady = false;
+            wildBoarReady = false;
             inDeathProcess = false;
             moveSpeed = 0f;
             if (coroutine != null)

@@ -66,7 +66,7 @@ namespace GoodbyeWildBoar
 
             if (m_Owner != null && Owner.Available && Owner.Id == m_OwnerId)
             {
-                Vector3 worldPosition = m_Owner.CachedTransform.position + new Vector3(0f, 2f, 0f);
+                Vector3 worldPosition = m_Owner.CachedTransform.position + new Vector3(0f, 2.3f, 0f);
                 Vector3 screenPosition = GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
 
                 Vector2 position;

@@ -5,7 +5,6 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace GoodbyeWildBoar

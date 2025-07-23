@@ -125,27 +125,21 @@ namespace GoodbyeWildBoar
             if (attacker == null || hitEntity == null) return;
 
             TargetableEntity target = hitEntity as TargetableEntity;
-            if (target != null)
-            {
-                ImpactData attackerImpactData = attacker.GetImpactData();
-                ImpactData hitImpactData = target.GetImpactData();
-                if (GetRelation(attackerImpactData.Camp, hitImpactData.Camp) == RelationType.Friendly) return;
+            if (target == null) return;
 
-                int targetDamageHP = CalcDamageHP(attackerImpactData.Attack, hitImpactData.Defense);
-                target.ApplyDamage(targetDamageHP);
-                return;
-            }
+            ImpactData attackerImpactData = attacker.GetImpactData();
+            ImpactData hitImpactData = target.GetImpactData();
+            if (GetRelation(attackerImpactData.Camp, hitImpactData.Camp) == RelationType.Friendly) return;
+
+            int targetDamageHP = CalcDamageHP(attackerImpactData.Attack, hitImpactData.Defense);
+            target.ApplyDamage(targetDamageHP);
         }
 
         private static int CalcDamageHP(int attack, int defense)
         {
-            if (attack <= 0)
-                return 0;
+            if (attack <= 0) return 0;
 
-            if (defense < 0)
-                defense = 0;
-
-            return attack * attack / (attack + defense);
+            return attack - (defense < 0 ? 0 : defense);
         }
 
         [StructLayout(LayoutKind.Auto)]
