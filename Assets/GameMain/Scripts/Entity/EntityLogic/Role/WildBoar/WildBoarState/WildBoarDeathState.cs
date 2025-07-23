@@ -25,8 +25,6 @@ namespace GoodbyeWildBoar
             {
                 // 重置数据
                 wildBoar.ResetData();
-                // 重置动画trigger
-                wildBoar.Animator.ResetTrigger(deathHash);
                 // 隐藏血条
                 GameEntry.HPBar.HideHPBar(wildBoar);
                 // 隐藏实体
@@ -34,6 +32,14 @@ namespace GoodbyeWildBoar
                 // 进入Idle状态
                 ChangeState<WildBoarIdleState>(_fsm);
             }
+        }
+
+        protected override void OnLeave(IFsm<WildBoarEntity> _fsm, bool isShutdown)
+        {
+            base.OnLeave(_fsm, isShutdown);
+
+            // 重置动画trigger
+            wildBoar.Animator.ResetTrigger(deathHash);
         }
     }
 }

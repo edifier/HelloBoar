@@ -34,9 +34,6 @@ namespace GoodbyeWildBoar
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
-
-            // 还原音乐
-            GameEntry.Sound.PlayMusic(1);
         }
 
         public void OnDrag(PointerEventData eventData)

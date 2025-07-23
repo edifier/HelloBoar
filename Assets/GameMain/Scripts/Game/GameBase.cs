@@ -5,6 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Xml.Serialization;
+using GameFramework;
 using GameFramework.Event;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -35,10 +37,13 @@ namespace GoodbyeWildBoar
             protected set;
         }
 
-        private CharacterEntity m_Character = null;
         private bool gameHasInit;
         private float timer = 0f;
 
+        /// <summary>
+        /// 主角引用
+        /// </summary>
+        protected CharacterEntity m_Character = null;
         /// <summary>
         /// 目前只有主场景
         /// todo: 未来如果有多个场景，再拓展
@@ -53,6 +58,8 @@ namespace GoodbyeWildBoar
             GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
             GameOver = false;
+            m_Character = null;
+            gameHasInit = false;
             // 初始化CharacterEntityId的路径，避免找不到路径问题
             DataNodeExtension.SetCharacterEntityId(-1);
             // 获取场景助手的引用
@@ -67,6 +74,7 @@ namespace GoodbyeWildBoar
 
         public virtual void Update(float elapseSeconds, float realElapseSeconds)
         {
+            // 游戏未初始化
             if (!gameHasInit)
             {
                 timer += elapseSeconds;
@@ -77,6 +85,13 @@ namespace GoodbyeWildBoar
                     // 初始化主游戏场景
                     InitMainGameScene();
                 }
+            }
+
+            // 游戏结束
+            // UI场景关闭
+            if (m_Character != null && m_Character.IsDead)
+            {
+                ExitGame();
             }
         }
 
@@ -107,6 +122,11 @@ namespace GoodbyeWildBoar
                 Name = "AxeKnight",
                 Position = Vector3.zero,
             });
+        }
+
+        protected virtual void ExitGame()
+        {
+            GameOver = true;
         }
     }
 }

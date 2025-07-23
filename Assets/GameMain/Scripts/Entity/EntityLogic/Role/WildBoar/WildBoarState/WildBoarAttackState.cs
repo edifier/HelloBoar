@@ -42,7 +42,7 @@ namespace GoodbyeWildBoar
             if (currentStateInfo.normalizedTime >= .95f)
             {
                 // 攻击间隔
-                wildBoar.resetTime = 1.2f;
+                wildBoar.resetTime = .7f;
                 ChangeState<WildBoarIdleState>(_fsm);
             }
         }

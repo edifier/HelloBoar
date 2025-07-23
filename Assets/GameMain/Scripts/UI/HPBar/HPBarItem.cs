@@ -24,7 +24,6 @@ namespace GoodbyeWildBoar
         private CanvasGroup m_CachedCanvasGroup = null;
         private Entity m_Owner = null;
         private int m_OwnerId = 0;
-        private MainAssistant mainAssistant;
 
         public Entity Owner
         {

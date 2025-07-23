@@ -64,15 +64,31 @@ namespace GoodbyeWildBoar
         }
 
         /// <summary>
-        /// 隐藏血条
+        /// 通过实体引用隐藏血条
         /// </summary>
         /// <param name="entity"></param>
         public void HideHPBar(Entity entity)
         {
             HPBarItem hpBarItem = GetActiveHPBarItem(entity);
-            hpBarItem.Reset();
+            if (hpBarItem == null) return;
             m_ActiveHPBarItems.Remove(hpBarItem);
             m_HPBarItemObjectPool.Unspawn(hpBarItem);
+            hpBarItem.Reset();
+        }
+
+        /// <summary>
+        /// 隐藏全部血条
+        /// </summary>
+        public void HideAllHPBar()
+        {
+            for (int i = 0; i < m_ActiveHPBarItems.Count; i++)
+            {
+                HPBarItem hpBarItem = m_ActiveHPBarItems[i];
+                m_HPBarItemObjectPool.Unspawn(hpBarItem);
+                hpBarItem.Reset();
+            }
+            // 清空数组
+            m_ActiveHPBarItems.Clear();
         }
 
         private HPBarItem GetActiveHPBarItem(Entity entity)

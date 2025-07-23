@@ -16,7 +16,7 @@ namespace GoodbyeWildBoar
         // 警戒距离
         protected readonly static float alertDistance = 5f;
         // 射线检测距离
-        protected float rayDistance = 1.5f;
+        protected float rayDistance = 1.2f;
         // 射线起点偏移（基于角色位置）
         protected Vector3 rayOffset = new Vector3(0, 0.85f, 0);
         // 射线半径（球形检测） 

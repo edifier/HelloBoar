@@ -38,8 +38,6 @@ namespace GoodbyeWildBoar
             int _id = DataNodeExtension.GetCharacterEntityId();
             Entity _entity = GameEntry.Entity.GetGameEntity(_id);
             character = _entity as CharacterEntity;
-            // 初始化状态机
-            InitStateMachine();
         }
 
         private void InitStateMachine()
@@ -69,14 +67,18 @@ namespace GoodbyeWildBoar
 
             // 延迟更新所在层，防止过早被攻击判定
             coroutine = StartCoroutine(SetLayerRecursivelyInDelay(userData));
+
+            // 初始化状态机
+            if (wildBoarFsm == null)
+                InitStateMachine();
+
+            // 解决场景切换回来以后inDeathProcess为true的bug
+            character.inDeathProcess = false;
         }
 
         private void OnDestroy()
         {
-            StopCoroutine(coroutine);
-            coroutine = null;
-
-            GameEntry.Fsm.DestroyFsm(wildBoarFsm);
+            ResetData();
         }
 
         private IEnumerator SetLayerRecursivelyInDelay(object userData)

@@ -14,6 +14,8 @@ namespace GoodbyeWildBoar
         {
             base.OnUpdate(_fsm, elapseSeconds, realElapseSeconds);
 
+            if (_fsm.CurrentState is WildBoarDeathState) return;
+
             // 判断和character的距离
             var _distance = (ownerTs.position - wildBoar.character.transform.position).magnitude;
             // 和character的距离过远，不做后面的判断

@@ -5,8 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using GameFramework;
 using GameFramework.DataTable;
+using GameFramework.Entity;
 using System;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace GoodbyeWildBoar
@@ -65,6 +68,40 @@ namespace GoodbyeWildBoar
         public static void ShowWildBoar(this EntityComponent entityComponent, WildBoarData data)
         {
             entityComponent.ShowEntity(typeof(WildBoarEntity), "WildBoar", Constant.AssetPriority.WildBoar, data);
+        }
+
+        public static IEntity[] GetAllEntity(this EntityComponent entityComponent, string groupName)
+        {
+            IEntityManager entityManager = GameFrameworkEntry.GetModule<IEntityManager>();
+            if (entityManager == null)
+            {
+                Log.Warning("实体模块未初始化");
+                return null;
+            }
+
+            IEntityGroup group = entityManager.GetEntityGroup(groupName);
+            if (group == null)
+            {
+                Log.Warning($"找不到实体组: {groupName}");
+                return null;
+            }
+            
+            return group.GetAllEntities();
+        }
+
+        public static void HideAllEntity(this EntityComponent entityComponent, string groupName)
+        {
+            IEntity[] allEntity = GameEntry.Entity.GetAllEntity(groupName);
+            IEntityManager entityManager = GameFrameworkEntry.GetModule<IEntityManager>();
+
+            if (allEntity.Length == 0)
+            {
+                Log.Warning("实体组为空");
+                return;
+            }
+
+            foreach (IEntity entity in allEntity)
+                entityManager.HideEntity(entity);
         }
 
         public static int GeneratePositiveSerialId(this EntityComponent entityComponent)

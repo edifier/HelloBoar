@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using UnityGameFramework.Runtime;
+using UnityEngine;
 
 namespace GoodbyeWildBoar
 {
@@ -32,6 +33,7 @@ namespace GoodbyeWildBoar
             m_TargetableObjectData.HP -= damageHP;
             float toHPRatio = m_TargetableObjectData.HPRatio;
 
+            Debug.Log(m_TargetableObjectData.HP);
             if (fromHPRatio > toHPRatio)
                 GameEntry.HPBar.ShowHPBar(this, fromHPRatio, toHPRatio);
         }
@@ -52,20 +54,5 @@ namespace GoodbyeWildBoar
                 return;
             }
         }
-
-        // private void OnTriggerEnter(Collider other)
-        // {
-        //     Entity entity = other.gameObject.GetComponent<Entity>();
-        //     if (entity == null)
-        //         return;
-
-        //     if (entity is TargetableEntity && entity.Id >= Id)
-        //     {
-        //         // 碰撞事件由 Id 小的一方处理，避免重复处理
-        //         return;
-        //     }
-
-        //     AIUtility.PerformCollision(this, entity);
-        // }
     }
 }

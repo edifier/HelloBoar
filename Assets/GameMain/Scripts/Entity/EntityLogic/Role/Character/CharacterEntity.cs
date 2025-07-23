@@ -22,7 +22,7 @@ namespace GoodbyeWildBoar
         public List<Entity> hitEntityList = new();
         public bool inAttackProcess = false;
         public bool inDeathProcess = false;
-
+        public bool inSwitchSceneProcess = false;
 
         protected override void OnInit(object userData)
         {
@@ -32,8 +32,6 @@ namespace GoodbyeWildBoar
             characterData = userData as CharacterData;
             // 获取组件引用
             animator = GetComponentInChildren<Animator>();
-            // 初始化状态机
-            InitStateMachine();
         }
 
         protected override void OnShow(object userData)
@@ -42,6 +40,13 @@ namespace GoodbyeWildBoar
 
             characterData = userData as CharacterData;
             Name = $"{characterData.Name} {Id}";
+
+            if (characterFsm == null)
+                // 初始化状态机
+                InitStateMachine();
+
+            if (characterFsm.CurrentState is CharacterDeathState)
+                inSwitchSceneProcess = true;
 
             // 显示血条
             var targetableObjectData = userData as TargetableObjectData;
@@ -79,6 +84,11 @@ namespace GoodbyeWildBoar
             hitEntityList.Clear();
             inAttackProcess = false;
             inDeathProcess = false;
+        }
+
+        private void OnDestroy()
+        {
+            ResetData();
         }
     }
 }
