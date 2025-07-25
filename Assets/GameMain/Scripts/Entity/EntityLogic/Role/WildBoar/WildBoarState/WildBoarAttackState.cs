@@ -3,7 +3,7 @@ using GameFramework.Fsm;
 
 namespace GoodbyeWildBoar
 {
-    public class WildBoarAttackState : WildBoarBaseState
+    public class WildBoarAttackState : WildBoarSurvivalState
     {
         private static readonly int attackHash = Animator.StringToHash("Attack");
         private bool hasPerformDamage = false;
@@ -32,8 +32,7 @@ namespace GoodbyeWildBoar
                 hasPerformDamage = true;
                 // character伤害
                 // 检测攻击范围，在范围内攻击主角
-                Vector3 rayOrigin = ownerTs.localPosition + rayOffset;
-                int hitCount = Physics.SphereCastNonAlloc(rayOrigin, rayRadius, ownerTs.forward, hitInfo, rayDistance, 1 << attackableLayers.value);
+                int hitCount = DetectTargetsInSphereCast();
                 if (hitCount != 0 && hitInfo[0].collider.gameObject == wildBoar.character.gameObject)
                     AIUtility.PerformDamage(fsm.Owner, wildBoar.character);
             }

@@ -23,6 +23,14 @@ namespace GoodbyeWildBoar
             rb.angularVelocity = Vector3.zero;
             // 播放待机动画
             wildBoar.Animator.SetTrigger(IdleHash);
+            // 死亡进程中，说明是播完死亡动画来到idle状态
+            if (wildBoar.IsDead && !wildBoar.isHide)
+            {
+                // 实体回收
+                wildBoar.isHide = true;
+                // 隐藏实体
+                GameEntry.Entity.HideEntity(wildBoar);
+            }
         }
 
         protected override void OnUpdate(IFsm<WildBoarEntity> _fsm, float elapseSeconds, float realElapseSeconds)
@@ -42,7 +50,8 @@ namespace GoodbyeWildBoar
         {
             base.OnLeave(_fsm, isShutdown);
 
-            wildBoar.Animator.ResetTrigger(IdleHash);
+            if (wildBoar != null)
+                wildBoar.Animator.ResetTrigger(IdleHash);
         }
     }
 }

@@ -33,7 +33,6 @@ namespace GoodbyeWildBoar
             m_TargetableObjectData.HP -= damageHP;
             float toHPRatio = m_TargetableObjectData.HPRatio;
 
-            Debug.Log(m_TargetableObjectData.HP);
             if (fromHPRatio > toHPRatio)
                 GameEntry.HPBar.ShowHPBar(this, fromHPRatio, toHPRatio);
         }

@@ -640,11 +640,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[3].m_InstanceCapacity
-      value: 16
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[4].m_InstanceCapacity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[5].m_InstanceCapacity
@@ -668,11 +668,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[3].m_InstanceExpireTime
-      value: 60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[4].m_InstanceExpireTime
-      value: 60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[5].m_InstanceExpireTime
@@ -700,7 +700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[4].m_InstanceAutoReleaseInterval
-      value: 60
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11494652, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EntityGroups.Array.data[5].m_InstanceAutoReleaseInterval

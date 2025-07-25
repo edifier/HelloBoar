@@ -5,8 +5,6 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using System.Xml.Serialization;
-using GameFramework;
 using GameFramework.Event;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -37,8 +35,10 @@ namespace GoodbyeWildBoar
             protected set;
         }
 
-        private bool gameHasInit;
-        private float timer = 0f;
+        // 通用内容加载完成
+        protected bool universalContentComplete;
+        // 计时器
+        protected float timer = 0f;
 
         /// <summary>
         /// 主角引用
@@ -57,9 +57,10 @@ namespace GoodbyeWildBoar
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
             GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
+            timer = 0f;
             GameOver = false;
             m_Character = null;
-            gameHasInit = false;
+            universalContentComplete = false;
             // 初始化CharacterEntityId的路径，避免找不到路径问题
             DataNodeExtension.SetCharacterEntityId(-1);
             // 获取场景助手的引用
@@ -75,12 +76,11 @@ namespace GoodbyeWildBoar
         public virtual void Update(float elapseSeconds, float realElapseSeconds)
         {
             // 游戏未初始化
-            if (!gameHasInit)
+            if (!universalContentComplete)
             {
                 timer += elapseSeconds;
                 if (timer >= gameReadyDelayedSeconds)
                 {
-                    gameHasInit = true;
                     timer = 0f;
                     // 初始化主游戏场景
                     InitMainGameScene();
@@ -91,7 +91,7 @@ namespace GoodbyeWildBoar
             // UI场景关闭
             if (m_Character != null && m_Character.IsDead)
             {
-                ExitGame();
+                ExitScene();
             }
         }
 
@@ -122,9 +122,11 @@ namespace GoodbyeWildBoar
                 Name = "AxeKnight",
                 Position = Vector3.zero,
             });
+            // 主屏幕初始化
+            universalContentComplete = true;
         }
 
-        protected virtual void ExitGame()
+        protected virtual void ExitScene()
         {
             GameOver = true;
         }

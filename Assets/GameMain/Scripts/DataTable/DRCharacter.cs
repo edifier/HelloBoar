@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-07-22 10:06:06.368
+// 生成时间：2025-07-25 16:18:07.364
 //------------------------------------------------------------
 
 using GameFramework;
@@ -108,6 +108,15 @@ namespace GoodbyeWildBoar
             private set;
         }
 
+        /// <summary>
+        /// 获取攻击音效。
+        /// </summary>
+        public int AttackSoundId
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -128,6 +137,7 @@ namespace GoodbyeWildBoar
             ArmorId2 = int.Parse(columnStrings[index++]);
             DeadSoundId = int.Parse(columnStrings[index++]);
             HP = int.Parse(columnStrings[index++]);
+            AttackSoundId = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -148,6 +158,7 @@ namespace GoodbyeWildBoar
                     ArmorId2 = binaryReader.Read7BitEncodedInt32();
                     DeadSoundId = binaryReader.Read7BitEncodedInt32();
                     HP = binaryReader.Read7BitEncodedInt32();
+                    AttackSoundId = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

@@ -20,8 +20,6 @@ namespace GoodbyeWildBoar
         [SerializeField]
         private Transform m_HPBarInstanceRoot = null;
 
-        private int m_InstancePoolCapacity = 16;
-
         private IObjectPool<HPBarItemObject> m_HPBarItemObjectPool = null;
         private List<HPBarItem> m_ActiveHPBarItems = null;
         private Canvas m_CachedCanvas = null;
@@ -35,7 +33,7 @@ namespace GoodbyeWildBoar
             }
 
             m_CachedCanvas = m_HPBarInstanceRoot.GetComponent<Canvas>();
-            m_HPBarItemObjectPool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
+            m_HPBarItemObjectPool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", Constant.SurvivalGame.WildBoarMaxCount);
             m_ActiveHPBarItems = new List<HPBarItem>();
         }
 

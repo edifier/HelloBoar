@@ -13,25 +13,28 @@ namespace GoodbyeWildBoar
 
             // 播放待机动画
             wildBoar.Animator.SetTrigger(deathHash);
+            // 播放死亡音乐
+            GameEntry.Sound.PlayMusic(wildBoar.wildBoarData.DeadSoundId);
         }
 
         protected override void OnUpdate(IFsm<WildBoarEntity> _fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(_fsm, elapseSeconds, realElapseSeconds);
 
+            if (wildBoar == null) return;
+
+            // 防止异常处理
+            if (!wildBoar.IsDead)
+            {
+                ChangeState<WildBoarIdleState>(_fsm);
+                return;
+            }
+
             AnimatorStateInfo currentStateInfo = wildBoar.Animator.GetCurrentAnimatorStateInfo(0);
             // 死亡后的处理
-            if (currentStateInfo.normalizedTime >= .95f && wildBoar.inDeathProcess)
-            {
-                // 重置数据
-                wildBoar.ResetData();
-                // 隐藏血条
-                GameEntry.HPBar.HideHPBar(wildBoar);
-                // 隐藏实体
-                GameEntry.Entity.HideEntity(wildBoar);
-                // 进入Idle状态
+            if (currentStateInfo.normalizedTime >= .95f)
+                // 进入站立状态
                 ChangeState<WildBoarIdleState>(_fsm);
-            }
         }
 
         protected override void OnLeave(IFsm<WildBoarEntity> _fsm, bool isShutdown)

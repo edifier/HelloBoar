@@ -8,7 +8,6 @@ namespace GoodbyeWildBoar
     {
         public Animator animator;
         private float moveSpeed = 4f;
-        private float attackRange = 2f;
 
         private IFsm<CharacterEntity> characterFsm;
 
@@ -17,12 +16,11 @@ namespace GoodbyeWildBoar
         // 属性访问器
         public Animator Animator => animator;
         public float MoveSpeed => moveSpeed;
-        public float AttackRange => attackRange;
 
-        public List<Entity> hitEntityList = new();
         public bool inAttackProcess = false;
-        public bool inDeathProcess = false;
         public bool inSwitchSceneProcess = false;
+        public bool inEscapeProcess = false;
+        public bool isHide = false;
 
         protected override void OnInit(object userData)
         {
@@ -41,16 +39,25 @@ namespace GoodbyeWildBoar
             characterData = userData as CharacterData;
             Name = $"{characterData.Name} {Id}";
 
-            if (characterFsm == null)
-                // 初始化状态机
-                InitStateMachine();
-
-            if (characterFsm.CurrentState is CharacterDeathState)
-                inSwitchSceneProcess = true;
+            // 初始化状态机
+            InitStateMachine();
 
             // 显示血条
             var targetableObjectData = userData as TargetableObjectData;
             GameEntry.HPBar.ShowHPBar(this, targetableObjectData.HPRatio, targetableObjectData.HPRatio);
+        }
+
+        protected override void OnRecycle()
+        {
+            base.OnRecycle();
+
+            // 重置数据
+            ResetData();
+            // 隐藏血条
+            GameEntry.HPBar.HideHPBar(this);
+            // 摧毁FSM
+            GameEntry.Fsm.DestroyFsm(characterFsm);
+            characterFsm = null;
         }
 
         private void InitStateMachine()
@@ -81,14 +88,10 @@ namespace GoodbyeWildBoar
 
         public void ResetData()
         {
-            hitEntityList.Clear();
             inAttackProcess = false;
-            inDeathProcess = false;
-        }
-
-        private void OnDestroy()
-        {
-            ResetData();
+            inSwitchSceneProcess = false;
+            inEscapeProcess = false;
+            isHide = false;
         }
     }
 }

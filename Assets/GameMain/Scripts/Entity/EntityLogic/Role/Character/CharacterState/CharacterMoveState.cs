@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using GameFramework.Event;
 using GameFramework.Fsm;
 using UnityEngine;
-using UnityGameFramework.Runtime;
 
 namespace GoodbyeWildBoar
 {

@@ -14,8 +14,14 @@ namespace GoodbyeWildBoar {
 
         public static class SurvivalGame
         {
-            public const int WildBoarMaxNum = 1;
-            public const float InitWildBoarInterval = 2f;
+            /// <summary>
+            /// Entity检查器中配置的Instance Capacity的值
+            /// </summary>
+            public const int WildBoarMaxCount = 12;
+            /// <summary>
+            /// 产生野猪的间隔时间
+            /// </summary>
+            public const float GenerateWildBoarInterval = 1.5f;
         }
     }
 }

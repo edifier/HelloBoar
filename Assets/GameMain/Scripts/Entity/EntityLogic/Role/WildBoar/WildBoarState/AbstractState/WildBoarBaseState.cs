@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GoodbyeWildBoar
 {
-    public class WildBoarBaseState : FsmState<WildBoarEntity>
+    public abstract class WildBoarBaseState : FsmState<WildBoarEntity>
     {
         /// <summary>
         /// 提供给自定义方法内使用
@@ -44,12 +44,12 @@ namespace GoodbyeWildBoar
         protected override void OnUpdate(IFsm<WildBoarEntity> _fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(_fsm, elapseSeconds, realElapseSeconds);
+        }
 
-            if (wildBoar.IsDead && !wildBoar.inDeathProcess)
-            {
-                wildBoar.inDeathProcess = true;
-                ChangeState<WildBoarDeathState>(_fsm);
-            }
+        protected int DetectTargetsInSphereCast()
+        {
+            Vector3 rayOrigin = ownerTs.localPosition + rayOffset;
+            return Physics.SphereCastNonAlloc(rayOrigin, rayRadius, ownerTs.forward, hitInfo, rayDistance, 1 << attackableLayers.value);
         }
     }
 }

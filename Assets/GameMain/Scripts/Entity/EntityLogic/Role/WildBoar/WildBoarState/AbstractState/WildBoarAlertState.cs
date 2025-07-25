@@ -1,9 +1,10 @@
 using GameFramework.Fsm;
+
 using UnityEngine;
 
 namespace GoodbyeWildBoar
 {
-    public class WildBoarAlertState : WildBoarBaseState
+    public abstract class WildBoarAlertState : WildBoarSurvivalState
     {
         protected override void OnInit(IFsm<WildBoarEntity> _fsm)
         {
@@ -14,22 +15,22 @@ namespace GoodbyeWildBoar
         {
             base.OnUpdate(_fsm, elapseSeconds, realElapseSeconds);
 
-            if (_fsm.CurrentState is WildBoarDeathState) return;
+            if (_fsm.CurrentState is WildBoarDeathState || ownerTs == null) return;
 
             // 判断和character的距离
             var _distance = (ownerTs.position - wildBoar.character.transform.position).magnitude;
             // 和character的距离过远，不做后面的判断
-            if (_distance > 20 || wildBoar.character.inDeathProcess || wildBoar.character.IsDead) return;
+            if (_distance > 20 || wildBoar.character.IsDead) return;
 
-            // 检测攻击范围，在范围内攻击主角
-            Vector3 rayOrigin = ownerTs.localPosition + rayOffset;
-            int hitCount = Physics.SphereCastNonAlloc(rayOrigin, rayRadius, ownerTs.forward, hitInfo, rayDistance, 1 << attackableLayers.value);
+            int hitCount = DetectTargetsInSphereCast();
             if (hitCount != 0 && !wildBoar.inAttackProcess)
             {
                 wildBoar.inAttackProcess = true;
-                if (!wildBoar.character.inDeathProcess)
+                if (!wildBoar.character.IsDead)
+                {
                     // 进入攻击状态
                     ChangeState<WildBoarAttackState>(_fsm);
+                }
                 else
                 {
                     wildBoar.inAttackProcess = false;

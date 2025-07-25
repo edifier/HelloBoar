@@ -36,11 +36,5 @@ namespace GoodbyeWildBoar
             // 执行移动
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
         }
-
-        private void OnDestory()
-        {
-            character = null;
-            cermaOffset = Vector3.zero;
-        }
     }
 }

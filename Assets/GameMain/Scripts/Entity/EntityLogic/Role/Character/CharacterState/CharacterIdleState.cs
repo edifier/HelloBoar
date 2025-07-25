@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using GameFramework.Event;
 using GameFramework.Fsm;
 using UnityEngine;
@@ -23,6 +21,12 @@ namespace GoodbyeWildBoar
             character.Animator.SetTrigger(IdleHash);
             // 监听摇杆激活事件
             GameEntry.Event.Subscribe(JoystickEventArgs.EventId, JoystickEvtStartHandle);
+            if (character.IsDead && !character.isHide)
+            {
+                character.isHide = true;
+                // 隐藏实体
+                GameEntry.Entity.HideEntity(character);
+            }
         }
 
         protected override void OnUpdate(IFsm<CharacterEntity> _fsm, float elapseSeconds, float realElapseSeconds)

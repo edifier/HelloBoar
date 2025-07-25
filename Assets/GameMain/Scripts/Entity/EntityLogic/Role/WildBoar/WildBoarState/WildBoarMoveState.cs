@@ -13,11 +13,11 @@ namespace GoodbyeWildBoar
         private float separationForce = 5f;
         private float separationRadius = .4f;
         private readonly static float resetTimeDuration = 2.5f;
-        private readonly static float resetTimeDeterminationTime = 4f;
+        private readonly static float resetTimeDeterminationTime = 5f;
 
         private Rigidbody rb;
         private Transform characterTs;
-        private Collider[] overlapResults = new Collider[Constant.SurvivalGame.WildBoarMaxNum];
+        private Collider[] overlapResults = new Collider[Constant.SurvivalGame.WildBoarMaxCount];
 
         protected override void OnInit(IFsm<WildBoarEntity> _fsm)
         {
@@ -50,8 +50,14 @@ namespace GoodbyeWildBoar
                 return;
             }
 
+            if (wildBoar.character.IsDead)
+            {
+                ChangeState<WildBoarIdleState>(_fsm);
+                return;
+            }
+
             // 应用分离力防止重叠
-            // ApplySeparationForce();
+            ApplySeparationForce();
 
             // 调整朝向
             SmoothRotation();
@@ -79,6 +85,7 @@ namespace GoodbyeWildBoar
             Vector3 repulsion = Vector3.zero;
             int count = 0;
 
+            if (nearbyCount == 0) return;
             foreach (Collider other in overlapResults)
             {
                 // 排除自己
@@ -97,7 +104,7 @@ namespace GoodbyeWildBoar
             if (count > 0)
             {
                 repulsion /= count;
-                rb.AddForce(repulsion * separationForce, ForceMode.VelocityChange);
+                rb.AddForce(repulsion * separationForce);
             }
         }
 
